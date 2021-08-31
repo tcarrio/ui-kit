@@ -107,6 +107,20 @@ describe('search parameter manager', () => {
     });
   });
 
+  describe('#state.parameters.lq', () => {
+    it('when the parameter is not the default, it is included', () => {
+      engine.state.advancedSearchQueries.lq = 'abc';
+      engine.state.advancedSearchQueries.defaultFilters.lq = 'def';
+      expect(manager.state.parameters.lq).toBe('abc');
+    });
+
+    it('when the parameter is the default, it is not included', () => {
+      engine.state.advancedSearchQueries.lq = 'abc';
+      engine.state.advancedSearchQueries.defaultFilters.lq = 'abc';
+      expect('lq' in manager.state.parameters).toBe(false);
+    });
+  });
+
   describe('#state.parameters.firstResult', () => {
     it('when the parameter does not equal the default value, it is included', () => {
       engine.state.pagination.firstResult = 1;

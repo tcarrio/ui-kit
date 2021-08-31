@@ -8,10 +8,11 @@ import {StringValue} from '@coveo/bueno';
  */
 export const updateAdvancedSearchQueries = createAction(
   'advancedSearchQueries/update',
-  (payload: {aq?: string; cq?: string}) =>
+  (payload: {aq?: string; cq?: string; lq?: string}) =>
     validatePayload(payload, {
       aq: new StringValue({required: false, emptyAllowed: true}),
       cq: new StringValue({required: false, emptyAllowed: true}),
+      lq: new StringValue({required: false, emptyAllowed: true}),
     })
 );
 
@@ -21,9 +22,10 @@ export const updateAdvancedSearchQueries = createAction(
  */
 export const registerAdvancedSearchQueries = createAction(
   'advancedSearchQueries/register',
-  (payload: {aq?: string; cq?: string}) =>
+  (payload: {aq?: string; cq?: string; lq?: string}) =>
     validatePayload(payload, {
       aq: new StringValue({required: false, emptyAllowed: true}),
       cq: new StringValue({required: false, emptyAllowed: true}),
+      lq: new StringValue({required: false, emptyAllowed: true}),
     })
 );
